@@ -25,4 +25,4 @@ const turfTimeSlotsSchema = new mongoose.Schema({
   ]
 });
 
-export const TurfSlot = mongoose.model('turfTimeSlot', turfTimeSlotsSchema);
+export const turfSlot = mongoose.model('turfTimeSlot', turfTimeSlotsSchema);

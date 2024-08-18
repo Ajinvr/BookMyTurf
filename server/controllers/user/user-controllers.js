@@ -2,7 +2,8 @@ import { body, validationResult } from 'express-validator';
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken"
 import { user } from "../../db/models/userModel.js"
-import { Order } from '../../db/models/ordersModel.js';
+import { order } from '../../db/models/ordersModel.js';
+import { turf } from '../../db/models/turfModel.js'
 const salt = 10;
 
 
@@ -84,26 +85,22 @@ export const userprofile = async (req, res) => {
   try {
     const { id } = req.user;
     const userData = await user.findById(id).select('name email');
-    const orderHistory = await Order.find({ userId: id });
+    const orderHistory = await order.find({ userId: id });
 
     if (!userData) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Extract turfIds from orders
     const turfIds = orderHistory.map(order => order.turfId);
 
-    // Fetch turfs using the extracted turfIds
-    const turfs = await Turf.find({ _id: { $in: turfIds } });
+    const turfs = await turf.find({ _id: { $in: turfIds } });
 
-    // Combine user data, order history, and turfs
+
     const userProfile = {
       user: userData,
       orderHistory,
-      turfs // This will include all the turfs fetched
+      turfs
     };
-
-    console.log(userProfile); // Log the user profile with turfs
 
     res.json(userProfile);
   } catch (error) {

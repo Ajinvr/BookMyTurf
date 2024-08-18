@@ -5,13 +5,13 @@ export const userAuth = (req, res, next) => {
         const { token } = req.cookies;
 
         if (!token) {
-            return res.status(400).json({ success: false, message: "user not authenticated" });
+            return res.status(400).json({ success: false, msg: "user not authenticated",ts: "error" });
         }
 
         const tokenVerified = jwt.verify(token, process.env.jWTKEY);
 
         if (!tokenVerified) {
-            return res.status(400).json({ success: false, message: "user not authenticated" });
+            return res.status(400).json({ success: false, msg: "user not authenticated",ts: "error" });
         }
 
         req.user = tokenVerified;

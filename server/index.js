@@ -4,7 +4,8 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import user from "./routes/user-routes.js"
 import { connectdb } from "./db/config/connectDb.js";
-import { userAuth } from "./middlewares/authMiddleware.js";
+import { userAuth } from "./middlewares/userAuthMiddleware.js";
+import turf from './routes/turf-routes.js'
 
 dotenv.config();
 connectdb();
@@ -18,12 +19,12 @@ app.use(cookieParser());
 
 //routes
 app.use("/api", user);
-
+app.use("/api/manager", turf)
 
 
 
 app.get("/",(req, res) => res.send("working..."));
-app.all("*", (req, res, next) => res.status(404).json({ message: " route does not exist" }));
+app.all("*", (req, res, next) => res.status(404).json({ message: " Route does not exist" }));
 
 server.listen(port, () => {
   console.log(`Server running on port ${port}`);

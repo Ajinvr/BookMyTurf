@@ -58,4 +58,4 @@ const turfSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-export const Turf = mongoose.model("turf", turfSchema);
+export const turf = mongoose.model("turf", turfSchema);

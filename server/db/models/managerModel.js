@@ -22,4 +22,4 @@ const managerSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
-export const user = mongoose.model("manager",managerSchema)
+export const manager = mongoose.model("manager",managerSchema)
