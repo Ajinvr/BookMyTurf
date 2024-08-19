@@ -96,7 +96,7 @@ export const editturf = async (req, res) => {
       updates.imgLink = imgLink;
     }
 
-    const updatedTurf = await turf.findByIdAndUpdate(id, updates, { new: true });
+   await turf.findByIdAndUpdate(id, updates, { new: true });
 
     return res.status(200).json({ msg: 'Turf updated successfully', ts: 'success'});
   } catch (error) {

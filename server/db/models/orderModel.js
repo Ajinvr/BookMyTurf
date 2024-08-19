@@ -9,6 +9,10 @@ const orderSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  managerId:{
+    type: String,
+    required: true
+  },
   bookingdate: {
     type: Date,
     required: true
