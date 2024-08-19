@@ -24,7 +24,7 @@ app.use("/api/manager", turf)
 
 
 app.get("/",(req, res) => res.send("working..."));
-// app.all("*", (req, res, next) => res.status(404).json({ message: " Route does not exist 😑" }));
+app.all("*", (req, res, next) => res.status(404).json({ message: " Route does not exist 😑" }));
 
 server.listen(port, () => {
   console.log(`Server running on port ${port}`);
