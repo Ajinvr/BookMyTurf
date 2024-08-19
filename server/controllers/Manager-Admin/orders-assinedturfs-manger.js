@@ -1,5 +1,5 @@
-import { order } from "../../db/models/orderModel";
-import { turf } from "../../db/models/turfModel";
+import { order } from "../../db/models/orderModel.js";
+import { turf } from "../../db/models/turfModel.js";
 
 export const managerAssignedTurfs = async (req, res) => {
   try {
