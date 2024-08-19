@@ -6,6 +6,7 @@ import { createslots } from '../utils/create-slots.js';
 import { managerAssignedTurfs, managerAssignedTurfsOrders } from '../controllers/Manager-Admin/orders-assinedturfs-manger.js';
 
 const router = express.Router();
+
 router.route('/addturf').post(managerAuth,upload.single('file'),addturf);
 router.route('/editturf:id').patch(managerAuth,upload.single('file'),editturf)
 router.route('/deleteturf:id').delete(managerAuth,deleteturf)

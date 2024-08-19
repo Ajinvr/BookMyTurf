@@ -3,7 +3,7 @@ import { turf } from '../../db/models/turfModel.js';
 import { imageUploadCloudinary } from '../../utils/cloudinary.js';
 import cloudinary from 'cloudinary';
 
-export const getturf = async (req,res) => {
+export const getallturf = async (req,res) => {
    try {
       const turfs = await turf.find();
       res.json({ turfs, ts: "success" });
@@ -111,7 +111,7 @@ export const deleteturf = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const foundturf = await turf.findById(id);
+    const foundturf = await turf.findById({id});
 
     if (!foundturf) {
       return res.status(404).json({ msg: "Turf not found", ts: "error" });
@@ -124,7 +124,7 @@ export const deleteturf = async (req, res) => {
       await cloudinary.uploader.destroy(publicId);
     }
 
-    await turf.findByIdAndDelete(id);
+    await turf.findByIdAndDelete({id});
 
     res.status(200).json({ msg: "Turf deleted successfully", ts: "success" });
   } catch (error) {

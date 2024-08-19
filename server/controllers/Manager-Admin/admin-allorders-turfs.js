@@ -49,3 +49,25 @@ export const adminGetAllUsers = async (req, res) => {
     res.status(500).json({ msg: "Internal Server Error", ts: "error" });
   }
 };
+
+
+export const deleteManager = async (req, res) => {
+  const { managerId } = req.body;
+
+  if (!managerId) {
+    return res.status(400).json({ msg: "Manager ID is required", ts: "error" });
+  }
+
+  try {
+    const result = await manager.findByIdAndDelete(managerId);
+
+    if (!result) {
+      return res.status(404).json({ msg: "Manager not found", ts: "error" });
+    }
+
+    return res.status(200).json({ msg: "Manager successfully deleted", ts: "success" });
+  } catch (error) {
+    console.error("Error deleting manager:", error);
+    return res.status(500).json({ msg: "Server error", ts: "error" });
+  }
+};
