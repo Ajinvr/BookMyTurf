@@ -53,6 +53,8 @@ export const addturf = async (req, res) => {
 
     return res.status(201).json({ msg: 'Turf added successfully', ts: 'success'});
   } catch (error) {
+    console.log(error);
+    
     return res.status(500).json({ msg: 'Server error, try again', ts: 'error',  });
   }
 };
