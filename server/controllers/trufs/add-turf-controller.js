@@ -1,8 +1,6 @@
 import { body, validationResult } from 'express-validator';
 import { turf } from '../../db/models/turfModel.js';
-
-
-// Add turf
+import { imageUploadCloudinary } from '../../utils/cloudinary.js';
 
 export const addTurfValidators = [
   body('name').notEmpty().withMessage('Name is required').trim().escape(),
@@ -21,10 +19,12 @@ export const addturf = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { userId, name, rent, size, description, address, pincode, slots} = req.body;
+  const { name, rent, size, description, address, pincode, slots } = req.body;
+  const userId = req.user.id;
 
   try {
-    const newturf = await turf.create({
+    const imgLink = await imageUploadCloudinary(req.file.path);
+    turf.create({
       userId,
       imgLink,
       name,
@@ -34,11 +34,11 @@ export const addturf = async (req, res) => {
       address,
       pincode,
       slots,
-      assignedTo:userId,
+      assignedTo: userId,
     });
 
-    res.status(201).json({ msg: 'Turf added successfully', ts: 'success', turf: newturf });
+    return res.status(201).json({ msg: 'Turf added successfully', ts: 'success'});
   } catch (error) {
-    res.status(500).json({ msg: 'Server error, try again', ts: 'error', error });
+    return res.status(500).json({ msg: 'Server error, try again', ts: 'error',  });
   }
 };
