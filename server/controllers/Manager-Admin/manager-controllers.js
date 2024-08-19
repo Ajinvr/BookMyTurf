@@ -2,8 +2,7 @@ import { body, validationResult } from 'express-validator';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { manager } from '../../db/models/managerModel.js';
-import { order } from '../../db/models/orderModel.js';
-import { turf } from '../../db/models/turfModel.js';
+
 
 const salt = 10;
 

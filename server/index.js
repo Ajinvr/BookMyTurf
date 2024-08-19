@@ -3,6 +3,7 @@ import http from "http";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import user from "./routes/user-routes.js"
+import admin from "./routes/admin-routes.js"
 import { connectdb } from "./db/config/connectDb.js";
 import { userAuth } from "./middlewares/userAuthMiddleware.js";
 import turf from './routes/turf-routes.js'
@@ -20,7 +21,7 @@ app.use(cookieParser());
 //routes
 app.use("/api", user);
 app.use("/api/manager", turf)
-
+app.use("api/admin",admin)
 
 
 app.get("/",(req, res) => res.send("working..."));
