@@ -3,19 +3,16 @@ import { turf } from '../../db/models/turfModel.js';
 import { imageUploadCloudinary } from '../../utils/cloudinary.js';
 import cloudinary from 'cloudinary';
 
-export const getallturf = async (req,res) => {
+export const getAllturf = async (req,res) => {
    try {
       const turfs = await turf.find();
-      res.json({ turfs, ts: "success" });
+      res.json({ turfs});
    } catch (error) {
      res.status(500).json({ msg: "Server Error", ts: "error" });
    }
 }
 
-
-
-
-export const TurfValidators = [
+const TurfValidators = [
   body('name').notEmpty().withMessage('Name is required').trim().escape(),
   body('rent').isNumeric().withMessage('Rent must be a number').notEmpty(),
   body('size').notEmpty().withMessage('Size is required').trim().escape(),
@@ -25,10 +22,12 @@ export const TurfValidators = [
   body('slots').isArray().withMessage('Slots must be an array').optional(),
 ];
 
-
-export const addturf = async (req, res) => {
+// add turf =====
+export const addTurf = async (req, res) => {
+ 
   await Promise.all(TurfValidators.map(validator => validator.run(req)));
   const errors = validationResult(req);
+ 
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
@@ -53,17 +52,18 @@ export const addturf = async (req, res) => {
 
     return res.status(201).json({ msg: 'Turf added successfully', ts: 'success'});
   } catch (error) {
-    console.log(error);
-    
     return res.status(500).json({ msg: 'Server error, try again', ts: 'error',  });
   }
 };
 
 // editturf ======
-export const editturf = async (req, res) => {
+export const editTurf = async (req, res) => {
+ 
   const { id } = req.params;
+ 
   await Promise.all(TurfValidators.map(validator => validator.run(req)));
   const errors = validationResult(req);
+ 
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
@@ -101,23 +101,19 @@ export const editturf = async (req, res) => {
    await turf.findByIdAndUpdate(id, updates, { new: true });
 
     return res.status(200).json({ msg: 'Turf updated successfully', ts: 'success'});
-  } catch (error) {
-    console.log(error);
-    
+  } catch (error) { 
     return res.status(500).json({ msg: 'Server error, try again', ts: 'error' });
   }
 };
 
-
-export const deleteturf = async (req, res) => {
+// delete turf ==
+export const deleteTurf = async (req, res) => {
   const { id } = req.params;
 
   try {
     const foundturf = await turf.findById({id});
 
-    if (!foundturf) {
-      return res.status(404).json({ msg: "Turf not found", ts: "error" });
-    }
+    if (!foundturf) return res.status(404).json({ msg: "Turf not found", ts: "error" });
 
     const imgLink = foundturf.imgLink;
 
@@ -130,7 +126,6 @@ export const deleteturf = async (req, res) => {
 
     res.status(200).json({ msg: "Turf deleted successfully", ts: "success" });
   } catch (error) {
-    console.error("Error deleting turf:", error);
     res.status(500).json({ msg: "Error deleting turf", ts: "error" });
   }
 };

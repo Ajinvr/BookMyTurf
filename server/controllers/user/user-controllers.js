@@ -16,7 +16,7 @@ const tokengenerate = (name, email,id) => {
 
 // signup ====
 
-export const signupValidators = [
+const signupValidators = [
   body('name').notEmpty().withMessage('Name is required').trim().escape(),
   body('email').isEmail().withMessage('Enter a valid email address').normalizeEmail(),
   body('password').notEmpty().withMessage('Password is required').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long').trim(),
@@ -49,8 +49,7 @@ export const signup = async (req, res) => {
 
 
 // login ====
-
-export const loginValidators = [
+const loginValidators = [
   body('email').isEmail().withMessage('Enter a valid email address').normalizeEmail(),
   body('password').notEmpty().withMessage('Password is required').trim(),
 ];
@@ -80,13 +79,13 @@ export const login = async (req, res) => {
              }
 };
 
-
-export const userprofile = async (req, res) => {
+// get profile =====
+export const userProfile = async (req, res) => {
   try {
     const { id } = req.user;
     const userData = await user.findById(id).select('name email');
     const orderHistory = await order.find({ userId: id });
-
+    
     if (!userData) {
       return res.status(404).json({ message: 'User not found' });
     }

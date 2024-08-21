@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export const createslots = async (req, res) => {
+export const createSlots = async (req, res) => {
     const { key } = req.params;
     const secretKey = process.env.CREATESLOTS_SECRET_KEY;
 
@@ -67,7 +67,6 @@ export const createslots = async (req, res) => {
 
         res.status(201).json({ msg: "Slots created successfully", ts: "success" });
     } catch (error) {
-        console.error("Error creating or updating slots:", error);
         res.status(500).json({ msg: "Error creating or updating slots", ts: "error" });
     }
 };

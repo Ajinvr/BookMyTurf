@@ -1,18 +1,16 @@
 import express from 'express';
-import { addturf, deleteturf, editturf } from '../controllers/trufs/turf-controller.js';
+import { addTurf, deleteTurf, editTurf, getAllturf } from '../controllers/turf/turf-controller.js';
 import { managerAuth } from '../middlewares/managerAuthMiddleware.js';
 import { upload }  from '../middlewares/fileUploadMiddleware.js';
-import { createslots } from '../utils/create-slots.js';
-import { managerAssignedTurfs, managerAssignedTurfsOrders } from '../controllers/Manager-Admin/orders-assinedturfs-manger.js';
+import { createSlots } from '../utils/create-slots.js';
 
 const router = express.Router();
 
-router.route('/addturf').post(managerAuth,upload.single('file'),addturf);
-router.route('/editturf:id').patch(managerAuth,upload.single('file'),editturf)
-router.route('/deleteturf:id').delete(managerAuth,deleteturf)
-router.route('/createslots:key').put(createslots)
-router.route('/getmanagerAssignedTurfs').get(managerAuth,managerAssignedTurfs)
-router.route('/getmanagerAssignedTurfsOrders').get(managerAuth,managerAssignedTurfsOrders)
+router.route('/getAllTurf').get(getAllturf)
+router.route('/addTurf').post(managerAuth,upload.single('file'),addTurf);
+router.route('/editTurf:id').patch(managerAuth,upload.single('file'),editTurf)
+router.route('/deleteTurf:id').delete(managerAuth,deleteTurf)
+router.route('/createSlots:key').put(createSlots)
 
 
 export default router;

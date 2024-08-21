@@ -1,6 +1,6 @@
-note:admin can perform all actions including manager ones
 
-finished routes 
+Finished routes 
+
 login
 signup
 manager login 
