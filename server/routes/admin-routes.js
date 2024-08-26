@@ -1,6 +1,6 @@
 import express from 'express';
 import {adminAuth} from "../middlewares/adminAuthMiddleware.js"
-import { adminGetAllTurfs,adminGetAllManagers ,adminGetAllOrders, adminGetAllUsers, deleteManager} from '../controllers/Manager-Admin/admin-allorders-turfs.js';
+import { adminGetAllTurfs,adminGetAllManagers ,adminGetAllOrders, adminGetAllUsers, deleteManager} from '../controllers/Manager-Admin/admin-controllers.js';
 
 const router = express.Router();
 

@@ -1,4 +1,5 @@
 import express from "express";
+import cors from 'cors'
 import { connectdb } from "./db/config/connectDb.js";
 import http from "http";
 import dotenv from "dotenv";
@@ -16,15 +17,16 @@ const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 4000;
 
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
 //routes
-app.use("api", user);
-app.use("api/turf",turf)
-app.use("api/order",order)
-app.use("api/manager",manager)
-app.use("api/admin",admin)
+app.use("/api", user);
+app.use("/api/turf",turf)
+app.use("/api/order",order)
+app.use("/api/manager",manager)
+app.use("/api/admin",admin)
 
 
 app.get("/",(req, res) => res.send("working..."));

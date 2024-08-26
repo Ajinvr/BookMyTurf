@@ -13,7 +13,6 @@ export const imageUploadCloudinary = async (path) => {
 
         return uploadResult.url;
     } catch (error) {
-        console.error(error.message);
         throw new Error(error.message || "Internal server error");
     }
 };

@@ -3,6 +3,7 @@ import { turf } from '../../db/models/turfModel.js';
 import { imageUploadCloudinary } from '../../utils/cloudinary.js';
 import cloudinary from 'cloudinary';
 
+// get all 
 export const getAllturf = async (req,res) => {
    try {
       const turfs = await turf.find();
@@ -11,6 +12,24 @@ export const getAllturf = async (req,res) => {
      res.status(500).json({ msg: "Server Error", ts: "error" });
    }
 }
+
+
+
+// get availabletimeslots of a specific turf
+export const getTurfSlots = async (req,res) =>{
+      let { id } = req.params
+}
+
+export const getTurf = async (req,res) => {
+  let { id } = req.params
+  try {
+     const turfs = await turf.findOne({_id:id});
+     res.json({ turfs});
+  } catch (error) {
+    res.status(500).json({ msg: "Server Error", ts: "error" });
+  }
+}
+
 
 const TurfValidators = [
   body('name').notEmpty().withMessage('Name is required').trim().escape(),

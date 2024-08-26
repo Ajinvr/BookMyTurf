@@ -1,11 +1,23 @@
-import React from 'react'
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './pages/globalComponents/header/Header';
+import Home from './pages/Home/Home';
+import DetailsPage from './pages/Detailspage/DetailsPage';
+import Profile from './pages/profile/profile';
+
 
 function App() {
   return (
-    <div>
-      <h1 className='font-bold font text-3xl bg-yellow-500 p-10 text-red-600 uppercase'>Intial setup</h1>
-    </div>
-  )
+        <Router>
+              <Header/>
+                      <Routes>
+                           <Route path="/" element={<Home/>} />
+                           <Route path="/profile" element={<Profile/>} />
+                           <Route path="/details/:id" element={<DetailsPage/>} />
+                      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
