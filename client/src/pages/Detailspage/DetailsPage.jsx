@@ -1,35 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import axiosInstance from '../../axiosInstance';
 
 function DetailsPage() {
   const { id } = useParams();
-  const [details, setDetails] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchDetails = async () => {
-      try {
-        const response = await axios.get(`http://192.168.1.35:5000/api/turf/getTurf${id}`);
-        setDetails(response.data.turfs);
-        
-      } catch (err) {
-        setError(err.message || 'An error occurred');
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchDetails = async () => {
+    const response = await axiosInstance.get(`/api/turf/getTurf/${id}`);
+    return response.data.turfs;
+  };
 
-    fetchDetails();
-  }, [id]);
+  const { data: details, isLoading, isError, error } = useQuery(['turfDetails', id], fetchDetails);
 
-  if (loading) return <p>Loading...</p>
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>{error.message || 'An error occurred'}</p>;
 
   return (
     <>
-      <div className='h-100 p-10'></div>
-      <div style={{ fontFamily: "sub" }} className="flex flex-col md:flex-row p-4 md:p-8 lg:p-12">
+      <div style={{ fontFamily: "sub" }} className="flex flex-col md:flex-row p-6 md:p-8 lg:p-12 mt-20">
         <div className="flex-1 md:w-1/2">
           <img
             src={details?.imgLink}

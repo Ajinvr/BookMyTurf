@@ -12,7 +12,7 @@ const Dropdown = () => {
   };
 
   return (
-    <div className="relative text-neutral">
+    <div className="relative text-secondary">
       <button  onClick={toggleDropdown} className="w-5">
         <img src={profileicon} alt="profile" />
       </button>

@@ -9,7 +9,6 @@ function Home() {
         <Carousel/>
         <Sub text={"Near you"}/>
         <Card/>
-
     </div>
   )
 }
