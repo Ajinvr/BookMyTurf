@@ -47,7 +47,7 @@ export const adminGetAllUsers = async (req, res) => {
 
 
 export const deleteManager = async (req, res) => {
-       const { managerId } = req.body;
+       const { managerId } = req.params
        if (!managerId) return res.status(400).json({ msg: "Manager ID is required", ts: "error" });
             try {
                 const result = await manager.findByIdAndDelete(managerId);

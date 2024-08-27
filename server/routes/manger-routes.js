@@ -10,7 +10,7 @@ router.route('/managerSignup').post(managerSignup)
 router.route('/managerLogin').post(managerLogin)
 router.route('/getManagerAssignedTurfs').get(managerAuth,managerAssignedTurfs)
 router.route('/getManagerAssignedTurfsOrders').get(managerAuth,managerAssignedTurfsOrders)
-router.route('/deleteReview:id').delete(managerAuth,deleteReview)
+router.route('/deleteReview/:reviewId').delete(managerAuth,deleteReview)
 
 
 export default router;

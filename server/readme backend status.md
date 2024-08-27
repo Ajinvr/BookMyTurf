@@ -19,11 +19,11 @@ manager get orders of assined turfs
 manager cancel order
 add review
 delete review
+search
 
 pending routes
-availble time slots for each turf - its a web scoket with realtime time slot update (buildng in progress)
 order - planing do after creating frontend . i think it will be easy to do the payment integration that way  and also sendig email for ever order to user
-search - not started 
+
 
 
 

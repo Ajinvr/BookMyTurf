@@ -8,7 +8,7 @@ export const addReview = async (req, res) => {
   if (!name || !rating || !turfId)  return res.status(400).json({ msg: "Name, rating, and turf ID are required", ts: "error" });
   
   try {
-    await review.create({ name, userid:id, rating, description });
+    await review.create({ name, userid:id, rating, description,turfId });
     return res.status(201).json({ msg: "Review added successfully", ts: "success" });
   } catch (error) {
     return res.status(500).json({ msg: "Server error", ts: "error" });

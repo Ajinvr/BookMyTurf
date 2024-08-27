@@ -8,8 +8,8 @@ router.route('/adminGetAllUsers').get(adminAuth,adminGetAllUsers)
 router.route('/adminGetAllTurfs').get(adminAuth,adminGetAllTurfs)
 router.route('/adminGetAllBookings').get(adminAuth,adminGetAllOrders)
 router.route('/adminGetAllManagers').get(adminAuth,adminGetAllManagers)
-router.route('/adminDeleteManager').delete(adminAuth,deleteManager)
-router.route('/adminEditManager').delete(adminAuth,deleteManager)
+router.route('/adminDeleteManager/:managerId').delete(adminAuth,deleteManager)
+// router.route('/adminEditManager').delete(adminAuth,deleteManager)
 
 
 export default router;

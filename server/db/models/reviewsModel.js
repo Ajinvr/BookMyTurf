@@ -5,7 +5,11 @@ const reviewSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    userid :{
+    userid: {
+        type: String,
+        required: true,
+    },
+    turfId: {
         type: String,
         required: true,
     },

@@ -4,7 +4,7 @@ import { deleteOrder } from '../controllers/Manager-Admin/orders-assigned-turfs-
 
 const router = express.Router();
 
-router.route('/deleteOrder').delete(managerAuth,deleteOrder)
+router.route('/deleteOrder/:id').delete(managerAuth,deleteOrder)
 
 
 export default router;
