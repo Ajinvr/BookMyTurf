@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const items = [
-    "https://res.cloudinary.com/dibkjqtbx/image/upload/v1714544806/staticimages/d3rzdjbdhwr3bjdovp38.png",
-    "https://res.cloudinary.com/dibkjqtbx/image/upload/v1714544806/staticimages/d3rzdjbdhwr3bjdovp38.png",
+    "",
+    "",
   ];
 
   useEffect(() => {
