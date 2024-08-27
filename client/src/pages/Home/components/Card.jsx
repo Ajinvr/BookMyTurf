@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../../axiosInstance'; 
 import { useQuery } from 'react-query';
+import Loader from '../../globalComponents/loader/Loader';
+import Errorpage from '../../globalComponents/error/Errorpage';
 
 function Turf() {
   const navigate = useNavigate();
@@ -16,13 +18,9 @@ function Turf() {
     navigate(`/details/${id}`);
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <Loader/> ;
 
-  if (isError) {
-    return <div>Error fetching data: {error.message}</div>;
-  }
+  if (isError) return <Errorpage/>
 
   return (
     <div className="flex flex-wrap justify-center">

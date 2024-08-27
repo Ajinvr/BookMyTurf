@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import axiosInstance from '../../axiosInstance';
+import Loader from '../globalComponents/loader/Loader';
 
 function DetailsPage() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { id } = useParams();
 
   const fetchDetails = async () => {
@@ -13,7 +19,7 @@ function DetailsPage() {
 
   const { data: details, isLoading, isError, error } = useQuery(['turfDetails', id], fetchDetails);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loader/>
   if (isError) return <p>{error.message || 'An error occurred'}</p>;
 
   return (

@@ -3,7 +3,7 @@ import logo from '../../../assets/logo.png';
 
 function Footer() {
   return (
-    <footer style={{fontFamily:"sub"}} className="footer bg-primary text-base-content p-10">
+    <footer style={{fontFamily:"sub"}} className="footer bg-primary text-base-content p-10 mt-20">
     <aside>
       <img className='w-80' src={logo} alt="" />
     </aside>
