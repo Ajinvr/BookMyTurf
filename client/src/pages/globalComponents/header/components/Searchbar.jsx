@@ -20,7 +20,7 @@ function Searchbar() {
       return response.data;
     },
     {
-      enabled: !!query,
+      enabled: true, 
     }
   );
 
@@ -29,10 +29,11 @@ function Searchbar() {
       <input
         type="text"
         value={query}
+        style={{fontFamily:"sub"}}
         onChange={handleInputChange}
         placeholder="Search..."
+        className=' outline-none border-0 p-1 text-black rounded '
       />
-      <button onClick={() => {}}>Search</button>
     </div>
   );
 }

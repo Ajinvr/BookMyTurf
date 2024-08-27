@@ -19,16 +19,20 @@ export default {
     themes: [
       {
         LightTheme: {
-          "primary": "#10B981",
+          "primary": "#064E3B",
           "secondary": "#000000",
           "neutral": "#6b7280",
-          "base-100": "#ffffff",
+          "accent":"#ffffff",
+          "base-100":"#000000",
+          
         },
         DarkTheme: {
-          "primary": "#064E3B",
+          "primary": "#10B981",
           "secondary": "#ffffff",
           "neutral": "#6b7280",
-          "base-100": "#000000",
+          "accent":"#000000",
+          "base-100": "#ffffff",
+           
         },
       },
     ],

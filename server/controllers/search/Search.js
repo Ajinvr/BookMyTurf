@@ -9,6 +9,12 @@ const fuseOptions = {
 export const searchTurf = async (req, res) => {
   try {
     const query = req.query.q || '';
+    
+    if (query.trim() === '') {
+      const documents = await turf.find().exec();
+      return res.json(documents);
+    }
+
     const documents = await turf.find().exec();
     const fuse = new Fuse(documents, fuseOptions);
     const results = fuse.search(query).map(result => result.item);

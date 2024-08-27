@@ -23,3 +23,8 @@ body{
     align-items: center;
     gap: 10px;
   }
+
+  .sb{
+    align-items: center;
+    vertical-align: middle;
+  }

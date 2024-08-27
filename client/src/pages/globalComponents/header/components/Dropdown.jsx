@@ -12,7 +12,7 @@ const Dropdown = () => {
   };
 
   return (
-    <div className="relative text-secondary">
+    <div className="relative text-accent">
       <button  onClick={toggleDropdown} className="w-5">
         <img src={profileicon} alt="profile" />
       </button>
