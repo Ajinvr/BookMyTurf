@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import axiosInstance from '../../axiosInstance';
-import Loader from '../globalComponents/loader/Loader';
+import Loader from '../../globalComponents/loader/Loader';
 
 function DetailsPage() {
 

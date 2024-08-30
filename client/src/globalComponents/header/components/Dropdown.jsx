@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import profileicon from '../../../../assets/profileIcon.svg';
+import profileicon from '../../../assets/profileIcon.svg';
 import Theme from './Theme';
 import NavigateLink from './NavigateLink';
 import Login from './Login';

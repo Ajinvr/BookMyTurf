@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import editicon from '../../../../assets/editicon.svg';
+import editicon from '../../../assets/editicon.svg';
 
 
 function Pincode() {

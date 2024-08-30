@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropdown from './components/Dropdown';
-import logo from '../../../assets/logo.png';
+import logo from '../../assets/logo.png';
 import Searchbar from './components/Searchbar';
 import Pincode from './components/Pincode';
 import { useNavigate } from 'react-router-dom';

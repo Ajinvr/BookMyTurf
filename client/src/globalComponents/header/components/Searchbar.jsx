@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import axiosInstance from '../../../../axiosInstance';
+import axiosInstance from '../../../axiosInstance';
 
 function Searchbar() {
   const [query, setQuery] = useState('');

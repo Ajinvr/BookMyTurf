@@ -1,11 +1,11 @@
 // App.js
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './pages/globalComponents/header/Header';
+import Header from '../src/globalComponents/header/Header';
 import Home from './pages/Home/Home';
 import DetailsPage from './pages/Detailspage/DetailsPage';
 import Profile from './pages/profile/profile';
-import Footer from './pages/globalComponents/footer/Footer';
+import Footer from '../src/globalComponents/footer/Footer';
 
 
 

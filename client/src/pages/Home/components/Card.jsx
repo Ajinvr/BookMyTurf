@@ -2,13 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../../axiosInstance'; 
 import { useQuery } from 'react-query';
-import Loader from '../../globalComponents/loader/Loader';
-import Errorpage from '../../globalComponents/error/Errorpage';
+import Loader from '../../../globalComponents/loader/Loader';
+import Errorpage from '../../../globalComponents/error/Errorpage';
 
 function Turf() {
   const navigate = useNavigate();
 
-  // Fetching turfs data using React Query
+ 
   const { data, isLoading, isError, error } = useQuery('turfs', async () => {
     const response = await axiosInstance.get('/api/turf/getAllTurf');
     return response.data.turfs;
@@ -28,11 +28,11 @@ function Turf() {
         <div 
           key={turf._id} 
           style={{ fontFamily: "sub" }} 
-          className="w-60 card bg-base-100 shadow-xl m-5"
+          className="w-80 card bg-base-100 shadow-xl m-5"
           onClick={() => handleButtonClick(turf._id)}
         >
           <figure>
-            <img className='h-60'
+            <img className='h-60 rounded-xl'
               src={turf.imgLink}
               alt={turf.name}
             />

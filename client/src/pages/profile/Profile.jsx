@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Sub from '../globalComponents/sub heading/Sub'
+import Sub from '../../../src/globalComponents/sub heading/Sub'
 import logo from "../../assets/logo.png"
 import Orders from './Orders';
 

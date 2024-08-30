@@ -6,7 +6,7 @@ import React from 'react'
 
 function Orders() {
   return (
-    <div className='text-center text-2xl'> No Bookings yet...</div>
+    <div className='text-center text-2xl min-h-10 '>No Bookings yet...</div>
   )
 }
 
