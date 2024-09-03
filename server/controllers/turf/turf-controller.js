@@ -2,6 +2,7 @@ import { body, validationResult } from 'express-validator';
 import { turf } from '../../db/models/turfModel.js';
 import { imageUploadCloudinary } from '../../utils/cloudinary.js';
 import cloudinary from 'cloudinary';
+import { turfSlot } from '../../db/models/turfTimeSlotsModel.js';
 
 // get all 
 export const getAllturf = async (req,res) => {
@@ -15,10 +16,7 @@ export const getAllturf = async (req,res) => {
 
 
 
-// // get availabletimeslots of a specific turf
-// export const getTurfSlots = async (req,res) =>{
-//       let { id } = req.params
-// }
+
 
 export const getTurf = async (req,res) => {
   let { id } = req.params
@@ -147,5 +145,39 @@ export const deleteTurf = async (req, res) => {
     res.status(200).json({ msg: "Turf deleted successfully", ts: "success" });
   } catch (error) {
     res.status(500).json({ msg: "Error deleting turf", ts: "error" });
+  }
+};
+
+export const getTurfSlots = async (req, res) => {
+  try {
+    const { turfId } = req.params;
+    const { date } = req.query;
+
+    if (!turfId || !date) {
+      return res.status(400).json({ message: 'Turf ID and date are required' });
+    }
+
+    const parsedDate = new Date(date);
+
+    if (isNaN(parsedDate.getTime())) {
+      return res.status(400).json({ message: 'Invalid date format' });
+    }
+
+    const turf = await turfSlot.findOne({
+      turfId,
+      date: parsedDate
+    });
+    
+
+    if (!turf) {
+      return res.status(204).json({ message: 'No slots found for the given turf ID and date' });
+    }
+
+    const slots = turf.slots;
+
+    res.status(200).json(slots);
+  } catch (error) {
+    console.error('Server error:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
 };

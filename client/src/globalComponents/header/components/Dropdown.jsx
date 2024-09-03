@@ -12,17 +12,17 @@ const Dropdown = () => {
   };
 
   return (
-    <div className="relative text-accent">
+    <div className="relative text-white">
       <button  onClick={toggleDropdown} className="w-5">
         <img src={profileicon} alt="profile" />
       </button>
 
       {isOpen && (
-        <div onMouseLeave={toggleDropdown} className="absolute right-0 w-max bg-primary p-2 rounded shadow-lg overflow-hidden mt-5 -mr-2"> 
-          <Theme />
-          <hr/>
+        <div onMouseLeave={toggleDropdown} className="absolute right-0 w-max bg-primary p-2 rounded shadow-primary overflow-hidden mt-12 -mr-2 "> 
+          <Theme/>
+             <hr/>
           <NavigateLink text="Profile" path="/profile" />
-          <hr />
+             <hr/>
           <Login/>
         </div>
       )}

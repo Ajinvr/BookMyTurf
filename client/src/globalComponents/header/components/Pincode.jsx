@@ -27,7 +27,7 @@ function Pincode() {
 
 
   return (
-    <div className='pincode border-t-2 mt-3 border-inherit p-1'>
+    <div className='border-t-2 mt-2 border-white h-5'>
         {isEditing ? (
           <>
             <input
@@ -42,7 +42,7 @@ function Pincode() {
             </button>
           </>
         ) : (
-          <div className='edit'>
+          <div className='flex items-center gap-2'>
                <span className='font-bold text-white'>{pincode}</span>
            
                <img onClick={handleEdit} className='h-3' src={editicon} alt="" />

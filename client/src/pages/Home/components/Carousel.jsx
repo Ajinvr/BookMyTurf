@@ -16,11 +16,11 @@ const Carousel = () => {
   }, [items.length]);
 
   return (
-    <div className="carousel w-full mt-20">
+    <div className="carousel w-full h-80">
       {items.map((item, index) => (
         <div key={index} className={`carousel-item w-full ${index === currentIndex ? 'block' : 'hidden'} `}>
           
-             <img src={item} className="w-screen carousal " alt={`Carousel item ${index + 1}`}/>
+             <img src={item} className="w-screen carousal h-60 " alt={`Carousel item ${index + 1}`}/>
         
         </div>
       ))}

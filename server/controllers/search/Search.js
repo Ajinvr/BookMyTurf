@@ -3,7 +3,7 @@ import { turf } from '../../db/models/turfModel.js';
 
 const fuseOptions = {
   includeScore: true,
-  keys: ['name', 'rent', 'pincode', 'address']
+  keys: ['name', 'rent', 'pincode', 'size']
 };
 
 export const searchTurf = async (req, res) => {

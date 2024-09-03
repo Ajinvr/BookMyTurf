@@ -1,39 +1,23 @@
 import React, { useState } from 'react';
-import { useQuery } from 'react-query';
-import axiosInstance from '../../../axiosInstance';
-
+import axiosInstance from '../../../Utils/axiosInstance';
+import Seachicon from '../../../assets/searchicon.svg'
 function Searchbar() {
-  const [query, setQuery] = useState('');
-
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
+  
+  const handleclick = () => {
+   
   };
 
-  const { data, isError, isLoading } = useQuery(
-    ['searchResults', query],
-    async () => {
-      const response = await axiosInstance.get('/api/turf/searchturf', {
-        params: { q: query },
-      });
-      console.log(response.data);
-      
-      return response.data;
-    },
-    {
-      enabled: true, 
-    }
-  );
 
   return (
-    <div>
+    <div className='flex items-center bg-white px-2 rounded-lg'>
       <input
         type="text"
-        value={query}
-        style={{fontFamily:"sub"}}
-        onChange={handleInputChange}
-        placeholder="Search..."
-        className=' outline-none border-0 p-1 text-black rounded '
+        placeholder="Search"
+        className=' outline-none border-0 p-1 text-black rounded w-40 '
       />
+
+      <img  onClick={handleclick} className='h-5' src={Seachicon} alt="" />
+
     </div>
   );
 }

@@ -10,12 +10,12 @@ function Header() {
   let navigate = useNavigate()
 
   return (
-    <div className='fixed top-0 left-0 w-full bg-primary pt-3 px-3 z-50'>
+    <div className='sticky top-0 left-0 bg-primary p-2 w-screen '>
       <div className='flex justify-between'>
         <div className='flex'>
           <img onClick={()=>{navigate('/')}} className='w-20' src={logo} alt="Logo" />
         </div>
-        <div className='flex gap-5 mr-2 sb'>
+        <div className='flex gap-5 mr-2 sb items-center'>
           <Searchbar />
           <Dropdown />
         </div>
